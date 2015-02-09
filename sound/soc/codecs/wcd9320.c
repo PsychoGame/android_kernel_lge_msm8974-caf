@@ -7331,7 +7331,6 @@ static int taiko_codec_probe(struct snd_soc_codec *codec)
 		pr_err("%s: wcd9xxx init failed %d\n", __func__, ret);
 		goto err_nomem_slimch;
 	}
-#endif  // CONFIG_ENABLE_MBHC
 
 	taiko->clsh_d.buck_mv = taiko_codec_get_buck_mv(codec);
 	/* Taiko does not support dynamic switching of vdd_cp */
@@ -7367,6 +7366,7 @@ static int taiko_codec_probe(struct snd_soc_codec *codec)
 		pr_err("%s: mbhc init failed %d\n", __func__, ret);
 		goto err_hwdep;
 	}
+#endif  // CONFIG_ENABLE_MBHC
 
 	taiko->codec = codec;
 	for (i = 0; i < COMPANDER_MAX; i++) {
